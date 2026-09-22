@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS sistema_envios
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE sistema_envios;
+
+CREATE TABLE IF NOT EXISTS envios (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(120) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    destinatario VARCHAR(100) NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
