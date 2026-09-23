@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideas Madera</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #f8f3ea;
+            background:
+                linear-gradient(rgba(18, 15, 11, 0.78), rgba(18, 15, 11, 0.82)),
+                url("imagen.css/descaga1.avif") center / cover fixed no-repeat;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 16px 7%;
+            background: rgba(16, 13, 10, 0.82);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links a,
+        .nav-note {
+            color: #f5dfb4;
+            font-size: 15px;
+            text-decoration: none;
+            letter-spacing: 0;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-label {
+            align-self: center;
+            color: #f5d389;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .search-form input {
+            width: min(220px, 44vw);
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 6px;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .search-form button,
+        .whatsapp {
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .search-form button {
+            padding: 10px 14px;
+            color: #1d160c;
+            background: #d9ad5c;
+        }
+
+        main {
+            width: min(1180px, 90%);
+            margin: 0 auto;
+            padding: 42px 0 80px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            align-items: center;
+            gap: 28px;
+            padding-bottom: 32px;
+        }
+
+        .logo-frame {
+            display: grid;
+            place-items: center;
+            width: 160px;
+            height: 160px;
+            padding: 0;
+        }
+
+        .logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        h1,
+        h2,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #f5d389;
+            font-size: clamp(2rem, 5vw, 4.4rem);
+            line-height: 1;
+        }
+
+        .subtitle {
+            margin-bottom: 18px;
+            color: #fff4da;
+            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            font-weight: 700;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .services li {
+            padding: 9px 13px;
+            border: 1px solid rgba(245, 211, 137, 0.38);
+            border-radius: 999px;
+            color: #f7dfaa;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .section-title {
+            margin: 18px 0 20px;
+            color: #f5d389;
+            font-size: clamp(1.45rem, 3vw, 2.25rem);
+        }
+
+        .search-section {
+            margin: 10px 0 28px;
+            padding: 18px;
+            border: 1px solid rgba(245, 211, 137, 0.28);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.09);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+        }
+
+        .search-title {
+            margin: 0 0 12px;
+            color: #f5d389;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .main-search-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .main-search-form input {
+            flex: 1;
+            min-width: 0;
+            padding: 13px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 6px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.24);
+            outline: none;
+        }
+
+        .main-search-form button {
+            padding: 13px 18px;
+            border: 0;
+            border-radius: 6px;
+            color: #1d160c;
+            background: #d9ad5c;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            cursor: zoom-in;
+            filter: saturate(1.05) contrast(1.03);
+            transition: transform 0.35s ease, filter 0.35s ease;
+        }
+
+        .project-card video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: #111;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.04);
+            filter: saturate(1.14) contrast(1.06);
+        }
+
+        .project-card h3 {
+            margin: 0;
+            padding: 13px 14px 15px;
+            color: #fff3d4;
+            font-size: 1rem;
+            letter-spacing: 0;
+        }
+
+        .project-card.is-hidden,
+        .empty-message.is-hidden {
+            display: none;
+        }
+
+        .empty-message {
+            margin-top: 18px;
+            padding: 16px;
+            border: 1px solid rgba(245, 211, 137, 0.3);
+            border-radius: 8px;
+            color: #fff4da;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .whatsapp {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            padding: 12px 18px;
+            color: white;
+            background: #25d366;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            z-index: 10;
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            display: none;
+            place-items: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.86);
+            z-index: 30;
+        }
+
+        .lightbox.is-open {
+            display: grid;
+        }
+
+        .lightbox img {
+            max-width: min(100%, 1100px);
+            max-height: 86vh;
+            border-radius: 8px;
+            object-fit: contain;
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 6px;
+            color: #1d160c;
+            background: #d9ad5c;
+            cursor: pointer;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        @media (max-width: 900px) {
+            .navbar,
+            .hero {
+                align-items: flex-start;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 620px) {
+            main {
+                width: min(100% - 28px, 1180px);
+                padding-top: 28px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-frame {
+                width: 128px;
+                height: 128px;
+            }
+
+            .search-form {
+                width: 100%;
+            }
+
+            .search-form input {
+                flex: 1;
+                width: auto;
+            }
+
+            .main-search-form {
+                flex-direction: column;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="INDEX.php">Home</a></li>
+            <li><a href="INDEX4.php">Envíos</a></li>
+            <li><a href="https://facebook.com/share/1Gg4bBsSV6/">Facebook</a></li>
+            <li><span class="nav-note">Cobro por visita</span></li>
+        </ul>
+
+        <a class="nav-note" href="#search">Search</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="logo-frame">
+                <img src="img/Image20.png" alt="Logo Ideas Madera" class="logo">
+            </div>
+
+            <div>
+                <h1>Ideas Madera</h1>
+                <p class="subtitle">Diseño y fabricacion</p>
+                <ul class="services">
+                    <li>Cocinas</li>
+                    <li>Closet</li>
+                    <li>Muebles TV</li>
+                    <li>Puertas</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="search-section" id="search">
+                <h2 class="search-title">Search</h2>
+                <form class="main-search-form" role="search" id="searchForm" onsubmit="buscar(); return false;">
+                    <input id="searchInput" type="search" placeholder="Escribe: cocina, closet o muebles tv" aria-label="Search">
+                    <button type="button" onclick="buscar()">Search</button>
+                </form>
+            </div>
+
+            <h2 class="section-title">Resultados</h2>
+            <div class="gallery" id="gallery">
+                <article class="project-card is-hidden" style="display: none;" data-category="cocina" data-search="cocina cocinas">
+                    <img src="imagen.html/Imagecocina.jpeg" alt="Cocina integral en madera">
+                    <h3>Cocinas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="cocina" data-search="cocina cocinas">
+                    <img src="imagen.html/Imagecocina2.jpeg" alt="Cocina moderna en madera">
+                    <h3>Cocinas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="cocina" data-search="cocina cocinas">
+                    <img src="imagen.html/Imagecocina3.jpeg" alt="Detalle de cocina fabricada en madera">
+                    <h3>Cocinas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="cocina" data-search="cocina cocinas">
+                    <img src="imagen.html/Imagencocona1.jpeg" alt="Detalle de cocina fabricada en madera">
+                    <h3>Cocinas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="cocina" data-search="cocina cocinas">
+                    <img src="imagen.html/Imagencocina.jpeg" alt="Detalle de cocina fabricada en madera">
+                    <h3>Cocinas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="cocina" data-search="cocina cocinas">
+                    <img src="imagen.html/Imagen cocina x1.jpeg" alt="Detalle de cocina fabricada en madera">
+                    <h3>Cocinas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="cocina" data-search="cocina cocinas">
+                    <video controls>
+                        <source src="imagen.html/Videococina.mp4" type="video/mp4">
+                    </video>
+                    <h3>Cocinas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="cocina" data-search="cocina cocinas">
+                    <video controls>
+                        <source src="imagen.html/Video cicina x1.mp4" type="video/mp4">
+                    </video>
+                    <h3>Cocinas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="closet" data-search="closet closets">
+                    <img src="imagen.html/Imagecloset.jpeg" alt="Closet moderno fabricado en madera">
+                    <h3>Closet</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="closet" data-search="closet closets">
+                    <img src="imagen.html/Imagecloset2.jpeg" alt="Closet empotrado en madera">
+                    <h3>Closet</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="closet" data-search="closet closets">
+                    <img src="imagen.html/Imagecloset3.jpeg" alt="Interior de closet fabricado en madera">
+                    <h3>Closet</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="closet" data-search="closet closets">
+                    <img src="imagen.html/Imagenx1.jpeg" alt="Interior de closet fabricado en madera">
+                    <h3>Closet</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="closet" data-search="closet closets">
+                    <img src="imagen.html/Imagenx2.jpeg" alt="Interior de closet fabricado en madera">
+                    <h3>Closet</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="closet" data-search="closet closets">
+                    <video controls>
+                        <source src="imagen.html/video-closet.mp4" type="video/mp4">
+                    </video>
+                    <h3>Closet</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="closet" data-search="closet closets">
+                    <video controls>
+                        <source src="imagen.html/Videocloset2.mp4" type="video/mp4">
+                    </video>
+                    <h3>Closet</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="muebles para tv" data-search="muebles para tv muebles tv mueble tv mueble para tv tv television televisores">
+                    <img src="imagen.html/Imagemueblestv.jpeg" alt="Mueble para television en madera">
+                    <h3>Muebles TV</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="muebles para tv" data-search="muebles para tv muebles tv mueble tv mueble para tv tv television televisores">
+                    <img src="imagen.html/Imagemueblestv2.jpeg" alt="Mueble flotante para television">
+                    <h3>Muebles TV</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="muebles para tv" data-search="muebles para tv muebles tv mueble tv mueble para tv tv television televisores">
+                    <img src="imagen.html/Imagemueblestv3.jpeg" alt="Centro de entretenimiento en madera">
+                    <h3>Muebles TV</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="muebles para tv" data-search="muebles para tv muebles tv mueble tv mueble para tv tv television televisores">
+                    <img src="imagen.html/Imagemueblestv4.jpeg" alt="Mueble de sala para television">
+                    <h3>Muebles TV</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="puertas" data-search="puerta puertas">
+                    <img src="imagen.html/Imagepuertas.jpeg" alt="Puerta de madera instalada">
+                    <h3>Puertas</h3>
+                </article>
+
+                <article class="project-card is-hidden" style="display: none;" data-category="puertas" data-search="puerta puertas">
+                    <img src="imagen.html/Imagepuertas2.jpeg" alt="Puerta moderna fabricada en madera">
+                    <h3>Puertas</h3>
+                </article>
+
+            </div>
+            <p class="empty-message" id="emptyMessage">Escribe una categoria en el Search para ver las imagenes.</p>
+        </section>
+    </main>
+
+    <a href="https://wa.me/573107547342" target="_blank" class="whatsapp">WhatsApp</a>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" type="button" id="lightboxClose" aria-label="Cerrar imagen">&times;</button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
+    <script>
+        var searchInput = document.getElementById("searchInput");
+        var cards = document.querySelectorAll(".project-card");
+        var emptyMessage = document.getElementById("emptyMessage");
+        var galleryImages = document.querySelectorAll(".project-card img");
+        var lightbox = document.getElementById("lightbox");
+        var lightboxImage = document.getElementById("lightboxImage");
+        var lightboxClose = document.getElementById("lightboxClose");
+
+        function normalizeText(text) {
+            return text
+                .trim()
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s+/g, " ");
+        }
+
+        function buscar() {
+            var text = normalizeText(searchInput.value);
+            var visibleCount = 0;
+
+            cards.forEach(function(card) {
+                var searchWords = normalizeText(card.getAttribute("data-search"));
+                var shouldShow = text !== "" && searchWords.indexOf(text) !== -1;
+
+                card.classList.toggle("is-hidden", !shouldShow);
+                card.style.display = shouldShow ? "block" : "none";
+
+                if (shouldShow) {
+                    visibleCount += 1;
+                }
+            });
+
+            if (text === "") {
+                emptyMessage.textContent = "Escribe una categoria en el Search para ver las imagenes.";
+            } else {
+                emptyMessage.textContent = "No encontre imagenes para esa busqueda. Prueba con cocina, closet, puertas o muebles tv.";
+            }
+
+            emptyMessage.classList.toggle("is-hidden", visibleCount > 0);
+        }
+
+        searchInput.addEventListener("input", function() {
+            cards.forEach(function(card) {
+                card.classList.add("is-hidden");
+                card.style.display = "none";
+            });
+
+            emptyMessage.textContent = "Presiona Search para ver las imagenes.";
+            emptyMessage.classList.remove("is-hidden");
+        });
+
+        galleryImages.forEach(function(image) {
+            image.addEventListener("click", function() {
+                lightboxImage.src = image.src;
+                lightboxImage.alt = image.alt;
+                lightbox.classList.add("is-open");
+                lightbox.setAttribute("aria-hidden", "false");
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove("is-open");
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImage.src = "";
+        }
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", function(event) {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+                closeLightbox();
+            }
+        });
+
+        buscar();
+    </script>
+</body>
+</html>
