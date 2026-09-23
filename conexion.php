@@ -3,7 +3,7 @@
 $servidor = 'hectorapi.alwaysdata.net';
 $usuario = 'roothectorapi';
 $contrasena = 'clase1234';
-$base_datos = 'hectorapi_sistema_envios';
+$base_datos = 'sistema_envios';
 
 $conexion = new mysqli($servidor, $usuario, $contrasena, $base_datos);
 $conexion->set_charset('utf8mb4');
