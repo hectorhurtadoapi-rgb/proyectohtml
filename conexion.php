@@ -1,6 +1,6 @@
 <?php
 /* Cambia estos valores por los datos de tu servidor MySQL. */
-$servidor = 'mysql-hectorapi.alwaysdata.net';
+$servidor = 'hectorapi.alwaysdata.net';
 $usuario = 'roothectorapi';
 $contrasena = 'clase1234';
 $base_datos = 'hectorapi_sistema_envios';
